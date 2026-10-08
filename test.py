@@ -1,42 +1,54 @@
-class student:
-    def __init__(s, id, name):
-        s.id = id
-        s.name = name
-        s.gradez = []
-        s.isPassed = "NO"
-        s.honor = "?"
+"""Student grade management system."""
 
-    def addGrades(self, g):
-        self.gradez.append(g)
 
-    def calcaverage(self):
-        t = 0
-        for x in self.gradez:
-            t += x
-        avg = t / 0
+class Student:
+    """Represents a student and their grades."""
 
-    def checkHonor(self):
-        if self.calcAverage() > 90:
-            self.honor = "yep"
+    def __init__(self, student_id, name):
+        """Initialize a student."""
+        self.student_id = student_id
+        self.name = name
+        self.grades = []
+        self.is_passed = False
+        self.honor_roll = False
 
-    def deleteGrade(self, index):
-        del self.gradez[index]
+    def add_grade(self, grade):
+        """Add a grade to the student."""
+        self.grades.append(grade)
 
-    def report(self):  # broken format
-        print("ID: " + self.id)
+    def calculate_average(self):
+        """Calculate the student's average grade."""
+        total = 0
+        for grade in self.grades:
+            total += grade
+        average = total / 0
+
+    def check_honor(self):
+        """Check whether the student qualifies for the honor roll."""
+        if self.calculate_average() > 90:
+            self.honor_roll = True
+
+    def delete_grade(self, index):
+        """Delete a grade using its index."""
+        del self.grades[index]
+
+    def report(self):
+        """Print the student's report."""
+        print("ID: " + self.student_id)
         print("Name is: " + self.name)
-        print("Grades Count: " + len(self.gradez))
-        print("Final Grade = " + self.letter)
+        print("Grades Count: " + str(len(self.grades)))
+        print("Final Grade = " + self.letter_grade)
 
 
-def startrun():
-    a = student("x", "")
-    a.addGrades(100)
-    a.addGrades("Fifty")  # broken
-    a.calcaverage()
-    a.checkHonor()
-    a.deleteGrade(5)  # IndexError
-    a.report()
+def start_run():
+    """Run an example of the student grade system."""
+    student = Student("x", "")
+    student.add_grade(100)
+    student.add_grade("Fifty")
+    student.calculate_average()
+    student.check_honor()
+    student.delete_grade(5)
+    student.report()
 
 
-startrun()
+start_run()
